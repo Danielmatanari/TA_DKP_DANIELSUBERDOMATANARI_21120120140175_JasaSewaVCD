@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<head>
+	<title>Program Jasa Sewa Film </title>
+</head>
+<h1 style="color:Black;" style="background-color:White;<b>" >Jasa Sewa Film :</b></h3>
+<h3 style="color:Black;">Silahkan Lihat Code Film beserta harganya pada tabel dibawah ini :</h3>
+<body style="background-color:White;">
+
+    <table border="5" cellspacing="0" cellpadding="5">
+    
+		<tr>
+			<td>Code Film   </td>
+			<td>Judul Film</td>
+            <td>Harga Film</td>
+            <td>Genre Film</td>
+            
+		</tr>
+
+		<tr>
+			<td>100101</td>
+			<td>Doraemon</td>
+            <td>Rp7000</td>
+            <td>Adventure</td>
+            
+		</tr>
+        <tr>
+			<td>100102</td>
+			<td>Kimetsu no Yaiba</td>
+            <td>Rp5000</td>
+            <td>Action</td>
+            
+		</tr>
+        <tr>
+			<td>100103</td>
+			<td>Tokyo Revenge</td>
+            <td>Rp9000</td>
+            <td>Action</td>
+		</tr>
+        <tr>
+			<td>100104</td>
+			<td>Grand Blue</td>
+            <td>Rp10000</td>
+            <td>comedy</td>
+		</tr>
+        <tr>
+			<td>100105</td>
+			<td>G30SPKI</td>
+            <td>Rp12000</td>
+            <td>Pendidikan</td>
+		</tr>
+        <tr>
+			<td>100106</td>
+			<td>Dua Garis Biru</td>
+            <td>Rp13000</td>
+            <td>Comedy</td>
+		</tr>
+        <tr>
+			<td>100107</td>
+			<td>Gintama</td>
+            <td>Rp18000</td>
+            <td>Action</td>
+		</tr>
+	</table>
+
+    <table>
+        <br><form method="post">
+        <tr>
+            <td><label class="code" for="codeFilm">Code Film : </label></td>
+            <td><input type="text" id="codeFilm" name="CodeFilm" class="form1"> <br></td>
+        </tr>
+
+        <tr>
+            <td><label class="jumlah" for="LamaPeminjaman">Lama Peminjaman : </label></td>
+            <td><input type="text" id="LamaPeminjaman" name="LamaPinjam" class="form2"><br></td>
+        </tr>
+
+        <tr>
+            <td> <button class="tombol">Pinjam Sekarang</button></td>
+            <td></td>
+        </tr>
+        </form>
+    </table>       
+        <table border="0" cellspacing="0" cellpadding="5">
+            <tr>
+                <td>
+                    <?php
+                        class jasaFilm {
+                            private $codeFilm;
+                            private $lamaPinjam;
+                            private $hasil;
+
+                                public function __construct($codeFilm, $lamaPinjam){
+                                    $this->codeFilm = $codeFilm;
+                                    $this->lamaPinjam = $lamaPinjam;
+                                }
+
+                                public function setcodeFilm($codeFilmBaru){
+                                    $this->codeFilm = $codeFilmBaru;
+                                }
+
+                                public function setlamaPinjam($lamaPinjamBaru){
+                                    $this->lamaPinjam = $lamaPinjamBaru;
+                                }
+                                        
+                                public function getcodeFilm(){
+                                    return $this->codeFilm;
+                                }
+
+                                public function getlamaPinjam(){
+                                    return $this->lamaPinjam;
+                                }
+
+                                public function getHasil(){
+                                    while (true) {
+                                        if ($this->codeFilm == '100101'){
+                                            $hasil =7000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+
+                                        else if ($this->codeFilm == '100102'){
+                                            $hasil = 5000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+
+                                        else if ($this->codeFilm == '100103'){
+                                            $hasil = 9000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+                                        else if ($this->codeFilm == '100104'){
+                                            $hasil = 10000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+                                        else if ($this->codeFilm == '100105'){
+                                            $hasil = 12000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+                                            else if ($this->codeFilm == '100106'){
+                                            $hasil = 13000 * $this->lamaPinjam;
+                                            echo "Anda dapat membayar uang sejumlah :";
+                                            echo "<br>Rp$hasil";
+                                            break;
+                                        }
+                                            else if ($this->codeFilm == '100107'){
+                                                $hasil = 18000 * $this->lamaPinjam;
+                                                echo "Anda dapat membayar uang sejumlah :";
+                                                echo "<br>Rp$hasil";
+                                                break;
+                                        }
+                                        else {
+                                            echo"Code Buku Salah, Silahkan coba lagi";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            $CodeFilm = isset($_POST['CodeFilm'])?abs((int)$_POST['CodeFilm']):'';
+                            $LamaPinjam = isset($_POST['LamaPinjam'])?abs((int)$_POST['LamaPinjam']):'';
+                            $JasaFilm = new jasaFilm($CodeFilm, $LamaPinjam);
+
+                            $JasaFilm->getHasil();
+                    ?>
+                </td>
+            </tr>
+        </table>   
+</body>
+</html>
